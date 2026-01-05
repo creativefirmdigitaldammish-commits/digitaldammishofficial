@@ -50,6 +50,28 @@
         Our goal is to boost your online visibility, generate quality leads, and
         build a strong digital presence that drives real business growth.
       </p>
+      <a href="#contact" class="contact-btn">Contact Us</a>
+    </section>
+
+    <section class="intro" id="about">
+      <h2>ABOUT US</h2>
+      <p>
+        Digital Dammish is a results driven digital marketing agency dedicated
+        to helping businesses grow and succeed online. We combine creativity,
+        strategy, and technology to deliver digital solutions that are smart,
+        modern, and impactful.<br /><br />
+        From website design and development to digital marketing, branding, and
+        content creation, we offer complete services under one roof. Our
+        approach is focused on understanding your business goals, identifying
+        the right audience, and creating strategies that drive real results.<br /><br />
+        We believe every brand has a unique story. Our mission is to bring that
+        story to life through powerful design, data driven marketing, and
+        consistent brand messaging. At Digital Dammish, we do not just build
+        online presence, we build long term digital success for your
+        business.<br /><br />
+        Let us help you stand out, grow faster, and make a strong impact in the
+        digital world.
+      </p>
     </section>
 
     <section class="services" id="services">
@@ -247,14 +269,14 @@
           <div class="info-footer">
             <div>
               <h4>Our Location</h4>
-              <p>Kandivali West, Mumbai - 400067</p>
+              <p>Jogeshwari West, Mumbai-400102</p>
             </div>
 
             <div class="divider"></div>
 
             <div>
               <h4>More Information</h4>
-              <p>abc@digitaldammish.in</p>
+              <p>creativefirm.digitaldammish@gmail.com</p>
             </div>
           </div>
         </div>
@@ -264,31 +286,40 @@
     <!-- Footer -->
     <footer>
       <div class="footer-container">
+        <!-- NEW: Logo + Contact Card -->
+        <div class="footer-brand">
+          <img src="Logo_Final@3x2.png" alt="Logo" class="footer-brand-logo" />
+
+          <div class="footer-brand-contact">
+            <p>
+              <span class="icon">✉</span>
+              creativefirm.digitaldammish@gmail.com
+            </p>
+            <p>
+              <span class="icon">📞</span>
+              +91 7304283375
+            </p>
+          </div>
+        </div>
+
+        <!-- EXISTING COLUMN -->
         <div class="footer-column">
           <h4>Company</h4>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Our Values</a>
-          <a href="#">Contact</a>
-        </div>
-        <div class="footer-column">
-          <h4>Our Services</h4>
-          <a href="#">Content Creation</a>
-          <a href="#">Website Design & Development</a>
-          <a href="#">Paid Advertisement</a>
-          <a href="#">Social Media Marketing</a>
-          <a href="#">Email Marketing</a>
-          <a href="#">Influencer Marketing</a>
-          <a href="#">Search Engine Optimization</a>
-          <a href="#">Graphic Designing</a>
-          <a href="#">Motion Graphic</a>
-          <a href="#">Video Editing</a>
-          <a href="#">Logo Design</a>
+          <a href="#intro">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Our Services</a>
+          <a href="#contact">Contact Us</a>
         </div>
       </div>
+
       <div class="footer-bottom">
-        © Creative Inc 2025 Powered by Gapsed™ | All Rights Reserved
+        © Creative Inc <span id="currentYear"></span> Powered by Gapsed™ | All
+        Rights Reserved
       </div>
     </footer>
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
   </body>
 </html>

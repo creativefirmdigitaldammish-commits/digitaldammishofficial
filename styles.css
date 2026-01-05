@@ -521,6 +521,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 50px;
   margin-bottom: 20px;
 }
@@ -550,6 +551,47 @@ footer {
   color: #ffffff;
 }
 
+.footer-brand {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-brand-logo {
+  max-width: 170px;
+  margin-bottom: 20px;
+}
+
+.footer-brand-contact {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-brand-contact p {
+  gap: 10px;
+  font-size: 14px;
+  color: #ff6a00;
+  margin-bottom: 10px;
+  word-break: break-word;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-brand-contact .icon {
+  font-size: 16px;
+}
+
 /* Prevent stray horizontal scroll from 100vw */
 html,
 body {
@@ -570,8 +612,85 @@ body {
   display: block;
 }
 
+.intro {
+  text-align: center;
+  padding: 80px 20px;
+  color: #ffffff;
+}
+
+.contact-btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0b1d2d;
+  background: #ffffff;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
 /* Base mobile rules (≤480px wide) */
 @media (max-width: 768px) {
+  .footer-brand {
+    width: 100%;
+    max-width: 360px; /* ⬅️ important */
+    padding: 20px;
+  }
+
+  .footer-brand-logo {
+    max-width: 140px; /* ⬅️ smaller logo */
+    margin: 0 auto 16px;
+    display: block;
+  }
+  .footer-brand-contact p {
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    word-break: break-word; /* ⬅️ prevents overflow */
+    flex-wrap: wrap; /* ⬅️ allows wrapping */
+  }
+
+  .footer-brand-contact .icon {
+    flex-shrink: 0;
+  }
+
+  .contact-info h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .features li {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .info-footer {
+    display: flex;
+    flex-direction: column; /* ⬅️ stack */
+    gap: 16px;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .info-footer h4 {
+    font-size: 14px;
+  }
+
+  .info-footer p {
+    font-size: 13px;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
   .header-container {
     flex-direction: row;
     /* Keep everything in a row */
@@ -661,6 +780,8 @@ body {
 
   .features {
     grid-template-columns: 1fr;
+    gap: 10px;
+    padding-left: 0;
   }
 
   .divider {
@@ -684,6 +805,14 @@ body {
 
   .footer-bottom {
     font-size: 11px;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-brand-contact p {
+    justify-content: center;
   }
 
   /* Extra-tight layout for short screens (≤480w and ≤600h) */
