@@ -54,14 +54,39 @@
           <img src="Logo_Final@3x2.png" alt="Logo" />
         </div>
         <h1 class="site-title">Digital Dammish</h1>
-        <nav>
+
+        <!-- Desktop Nav - KEEP SAME -->
+        <nav class="desktop-nav">
           <a href="#intro">Home</a>
           <a href="#services">Our Services</a>
           <a href="#about">About Us</a>
           <a href="#contact">Contact Us</a>
         </nav>
+
+        <!-- Mobile Hamburger - HIDDEN ON DESKTOP -->
+        <div class="mobile-menu-toggle" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </header>
+
+    <!-- Mobile Menu Overlay - RIGHT SIDE PANEL -->
+    <div class="mobile-menu" id="mobileMenu">
+      <!-- CLOSE BUTTON TOP RIGHT -->
+      <div class="menu-close" id="menuClose">
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- VERTICAL MENU ITEMS -->
+      <a href="#intro">Home</a>
+      <a href="#services">Our Services</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+
     <section class="pic" id="pic">
       <video src="dd video.mp4" autoplay muted loop playsinline></video>
     </section>
@@ -258,25 +283,48 @@
     <div class="contact" id="contact">
       <div class="contact-wrapper">
         <!-- LEFT : FORM -->
-        <form>
+        <form id="contactForm">
           <div class="form-group">
-            <input type="text" placeholder="Name *" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Name *"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <input type="email" placeholder="Email *" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email *"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <input type="text" placeholder="Phone no *" />
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              placeholder="Phone no *"
+              required
+            />
           </div>
 
           <div class="form-group full-width">
-            <textarea placeholder="Message *"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Message *"
+              required
+            ></textarea>
           </div>
 
           <div class="form-group full-width">
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitBtn">Submit</button>
           </div>
         </form>
 
@@ -347,6 +395,86 @@
     <script>
       document.getElementById("currentYear").textContent =
         new Date().getFullYear();
+
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuClose = document.getElementById("menuClose");
+      const body = document.body;
+
+      // 1. Hamburger CLICK - Open/Close
+      hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+        body.classList.toggle("menu-open");
+      });
+
+      // 2. CLOSE BUTTON - Guaranteed to work
+      menuClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        body.classList.remove("menu-open");
+      });
+
+      // 3. Menu links - Close on click
+      document.querySelectorAll(".mobile-menu a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          hamburger.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          body.classList.remove("menu-open");
+
+          // Smooth scroll after closing
+          setTimeout(() => {
+            document.querySelector(link.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          }, 400);
+        });
+      });
+
+      // 4. Close on outside click (optional)
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          body.classList.remove("menu-open");
+        }
+      });
+
+      // Your existing menu code + this form code
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxeuIXzPZrQsnVoLDFrt1gwN-tzo9hohCROaOVX26u-2t1TA5NFNV7Gu0iWfnCscFE5/exec"; // Paste Step 2 URL
+
+      const form = document.getElementById("contactForm");
+      const submitBtn = document.getElementById("submitBtn");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.disabled = true;
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(form),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert("✅ Thank you! Your message has been sent.");
+            form.reset();
+          })
+          .catch((error) => {
+            alert("❌ Error! Please try again.");
+            console.error("Error!", error.message);
+          })
+          .finally(() => {
+            submitBtn.innerHTML = "Submit";
+            submitBtn.disabled = false;
+          });
+      });
     </script>
   </body>
 </html>
