@@ -532,18 +532,31 @@ footer {
 }
 
 .footer-column h4 {
-  font-size: 14px;
+  font-size: 20px;
   margin-bottom: 10px;
   text-transform: uppercase;
   color: #0c8ac9;
 }
 
 .footer-column a {
-  display: block;
+  display: inline;
   color: #ffffff;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 18px;
   margin-bottom: 5px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column li {
+  margin-top: 5px;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+  color: #ffe600;
 }
 
 .footer-bottom {
@@ -765,6 +778,25 @@ body {
   color: #ffe600 !important;
   padding-left: 15px;
   text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+}
+
+.footer-brand-contact a {
+  color: #ff6a00;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-brand-contact a:hover {
+  color: #e55a00;
+  text-decoration: underline;
+}
+
+.footer-brand-contact p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 /* DESKTOP NAV - KEEP EXACTLY SAME */
